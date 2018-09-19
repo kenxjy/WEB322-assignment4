@@ -15,17 +15,22 @@
 
 var express = require("express");
 var app = express();
-var HTTP_PORT = process.env.PORT || 8080;
 var path = require("path");
 
+var HTTP_PORT = process.env.PORT || 8080;
+
+// setting up default route
 app.get("/", function(req,res) {
     res.sendFile(path.join(__dirname,"/views/home.html"));
 });
 
+// setting up route for /about
 app.get("/about", function(req,res) {
     res.sendFile(path.join(__dirname,"/views/about.html"));
 });
 
+// for css
 app.use(express.static('public'));
 
+// setup listen
 app.listen(HTTP_PORT);
