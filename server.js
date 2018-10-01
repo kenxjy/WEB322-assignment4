@@ -35,8 +35,8 @@ app.get("/employees", function(req,res) {
     .then(function(value) {
         res.json(value);
     })
-    .catch(function() {
-        res.json({message: err})
+    .catch(function(err) {
+        res.json({message: err});
     });
     
 });
@@ -47,8 +47,8 @@ app.get("/managers", function(req,res) {
     .then(function(value) {
         res.json(value);
     })
-    .catch(function(value) {
-        res.json({message: err})
+    .catch(function(err) {
+        res.json({message: err});
     });
 });
 
@@ -59,7 +59,7 @@ app.get("/departments", function(req,res) {
         res.json(value);
     })
     .catch(function(err) {
-        res.json({message: err})
+        res.json({message: err});
     });
 });
 
@@ -73,7 +73,10 @@ app.use(express.static('public'));
 
 // setup listen
 service.initialize()
-.then(app.listen(HTTP_PORT))
+.then(function(msg) {
+    console.log(msg);
+    app.listen(HTTP_PORT);
+})
 .catch(function(err) {
-    {message: err};
+    console.log(err);
 });
