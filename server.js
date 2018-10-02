@@ -63,13 +63,14 @@ app.get("/departments", function(req,res) {
     });
 });
 
+
+// for css
+app.use(express.static('public'));
+
 // 404 message
 app.use(function(req,res,next) {
     res.status(404).send('Page not found, yo. 404');
 });
-
-// for css
-app.use(express.static('public'));
 
 // setup listen
 service.initialize()
