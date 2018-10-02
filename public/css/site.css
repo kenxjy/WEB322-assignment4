@@ -1,97 +1,37 @@
-h2 {
-    color: #333333;
+.navbar-default {
+    background-color: #700;
+    border-color: #700;
+    border-bottom-color: #333;
 }
 
-body p {
-    color: green;
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus, 
+.navbar-default .navbar-nav > .active > a:hover {
+	background-color: #DB7093;
+    color: black;
+}
+
+.navbar-default .navbar-nav > li > a:focus, 
+.navbar-default .navbar-nav > li > a:hover {
+    color: hotpink;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
 }
 
 
-html{
-    background-color:#F3F3F3;
+.navbar-default .navbar-brand {
+    font-family: Verdana;
+    color: white;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+	color: hotpink;
+	background-color: transparent;
 }
 
 body {
-    overflow-y: scroll;
-    font-family: Tahoma, sans-serif;
-    font-size: 11pt;
-    background: #ffffff;
-    color: #000000;
-}
-
-nav {
-    height: 40px;
-    background: #343434;
-    border: #000 solid 1px;
-    margin-top: -10px;
-}
-
-nav ul {
-    list-style-image: none;
-    list-style-position: outside;
-    list-style-type: none;
-    margin: 0 0 0 -12px;
-	padding:0px;
-}
-
-nav ul li {
-    float: left;
-}
-
-nav ul li a {
-    padding: 10px 12px 13px 12px;    
-    display: block;
-    line-height: 40px;
-    font: 100% Tahoma, sans-serif;
-    color: #ddd;
-    text-decoration: none;
-}
-
-
-
-nav ul li a:hover{
-    color: #fff;
-}
-
-header {
-	padding-top:1px;
-    background: green;
-    padding-bottom: 1px;
-}
-
-footer {
-    height: 30px;
-    width: 100%;
-    background: #343434;
-    border: #000 solid 1px;    
-    color: #eee;
-    text-align: left;
-    padding-top: 13px;
-    vertical-align:middle; 
-    float: left;
-}
-
-.center {
-	max-width:960px;
-	margin:0 auto;
-	padding-left:10px;
-	padding-right:10px;
-}
-
-div.single {
-    margin: 15px;
-}
-
-.two-column div.left {
-    float: left;
-    width: 30%;
-}
-
-.two-column div div {
-    margin: 10px;
-}
-
-.two-column div.right {
-    float: left;
-    width: 70%;
+    color: white;
+    background: #333;
 }
