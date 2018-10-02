@@ -9,33 +9,27 @@ var departments = [];
 // export functions
 module.exports = {
     initialize: function() {
-        let success = 0;
         let promise = new Promise(function(resolve, reject) {
             fs.readFile('./data/employees.json','utf8',(err,data) => {
                 if (err) {
-                    console.log("Error! employees.json could not be loaded!")
+                    reject("Error! employees.json could not be loaded!");
                 } else {
                     employees = JSON.parse(data);
                     console.log("employees.json loaded!");
-                    success = 1;
 
                     fs.readFile('./data/departments.json','utf8',(err,data) => {
                         if (err) {
-                            console.log("Error! employees.json could not be loaded!");
+                            reject("Error! employees.json could not be loaded!");
                         } else {
                             departments = JSON.parse(data);
                             console.log("departments.json loaded!");
-                            success = 2;
+                            resolve('Server initialization successful!');
                         }
                     });
                 }
             });
 
-            if (success == 2) {
-                resolve("It worked!");
-            } else {
-                reject("Data could not be initialized!");
-            }
+
 
         });
 
@@ -47,7 +41,7 @@ module.exports = {
             if (employees.length > 0) {
                 resolve(employees);
             } else {
-                reject("No results returned");
+                reject('No results returned!');
             }
         });
 
@@ -62,10 +56,10 @@ module.exports = {
                     managers.push(employees[i]);
                 }
 
-                if (managers.length > 0) {
+                if (managers.length == 0) {
                     resolve(managers);
                 } else {
-                    reject("No results returned");
+                    reject("No results returned!");
                 }
             }
         });
