@@ -1,14 +1,14 @@
 .navbar-default {
-    background-color: #700;
-    border-color: #700;
+    background-color: #700000;
+    border-color: #700000;
     border-bottom-color: #333;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus, 
 .navbar-default .navbar-nav > .active > a:hover {
-	background-color: #DB7093;
-    color: black;
+	background-color: #7a1f1f;
+    color: hotpink;
 }
 
 .navbar-default .navbar-nav > li > a:focus, 
