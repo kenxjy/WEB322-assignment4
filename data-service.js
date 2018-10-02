@@ -56,7 +56,7 @@ module.exports = {
                     managers.push(employees[i]);
                 }
 
-                if (managers.length == 0) {
+                if (managers.length > 0) {
                     resolve(managers);
                 } else {
                     reject("No results returned!");
