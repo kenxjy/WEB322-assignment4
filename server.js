@@ -19,6 +19,9 @@ var app = express();
 var path = require("path");
 var HTTP_PORT = process.env.PORT || 8080;
 
+// for css
+app.use(express.static('public'));
+
 // setting up default route
 app.get("/", function(req,res) {
     res.sendFile(path.join(__dirname,"/views/home.html"));
@@ -63,13 +66,19 @@ app.get("/departments", function(req,res) {
     });
 });
 
+// setting up route for /employees/add
+app.get("/employees/add", function(req,res) {
+    res.sendFile(path.join(__dirname,"/views/addEmployee.html"));
+});
 
-// for css
-app.use(express.static('public'));
+// setting up route for /images/add
+app.get("/images/add", function(req,res) {
+    res.sendFile(path.join(__dirname,"/views/addImage.html"));
+});
 
 // 404 message
 app.use(function(req,res,next) {
-    res.status(404).send('Page not found, yo. 404');
+    res.status(404).send('404: Page not found');
 });
 
 // setup listen
