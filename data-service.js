@@ -1,5 +1,5 @@
 /*****************************************************************************
-*  WEB322 – Assignment2 
+*  WEB322 – Assignment 3
 *  I declare that this assignment is my own work in accordance with Seneca 
 *  Academic Policy. No part of this assignment has been copied manually or 
 *  electronically from any other source (including web sites) or distributed 
@@ -7,9 +7,9 @@
 *  
 *  Name:         Kenneth Yue 
 *  Student ID:   1227932176 
-*  Date:         September 25, 2018 
+*  Date:         October 16, 2018 
 * 
-*  Online (Heroku) URL: https://glacial-plateau-51668.herokuapp.com/
+*  Online (Heroku) URL: https://shrouded-badlands-69336.herokuapp.com/
 * 
 *****************************************************************************/  
 
