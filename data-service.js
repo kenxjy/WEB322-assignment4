@@ -132,7 +132,7 @@ module.exports = {
                     reject("No results returned");
                 }
             } else {
-                reject("Invalid Status");
+                reject("Status \"" + status + "\" is invalid!");
             }
         });
 
@@ -152,10 +152,10 @@ module.exports = {
                 if (empByDep.length > 0) {
                     resolve(empByDep);
                 } else {
-                    reject("No results returned");
+                    reject("No results returned!");
                 }
             } else {
-                reject("Invalid Department Number");
+                reject("Department number " + department + " does not exist!");
             }
         });
 
@@ -175,10 +175,10 @@ module.exports = {
                 if (empByMan.length > 0) {
                     resolve(empByMan);
                 } else {
-                    reject("No results found");
+                    reject("No results found!");
                 }
             } else {
-                reject("Invalid Manager Number");
+                reject("Manager number " + manager + " does not exist!");
             }
         });
 

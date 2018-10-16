@@ -98,13 +98,19 @@ app.get("/employees/add", function(req,res) {
 
 // route for /employee/:employeeNum
 app.get("/employees/:employeeNum", function(req,res) {
-    service.getEmployeesByNum(req.params.employeeNum)
-    .then(function(value) {
-        res.json(value);
-    })
-    .catch(function(err) {
-        res.json({message: err});
-    });
+    // parse if employeeNum is a number
+    if (isNaN(req.params.employeeNum)) {
+        // redirect if number is invalid
+        res.redirect("/employees");    
+    } else {
+        service.getEmployeesByNum(req.params.employeeNum)
+        .then(function(value) {
+            res.json(value);
+        })
+        .catch(function(err) {
+            res.json({message: err});
+        });
+    }
 });
 
 
