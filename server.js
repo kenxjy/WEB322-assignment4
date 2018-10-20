@@ -96,6 +96,11 @@ app.get("/employees/add", function(req,res) {
     res.sendFile(path.join(__dirname,"/views/addEmployee.html"));
 });
 
+app.post("/employees/add", function(req,res) {
+    service.addEmployee(req.body)
+    .then(res.redirect('/employees'));
+});
+
 // route for /employee/:employeeNum
 app.get("/employees/:employeeNum", function(req,res) {
     // parse if employeeNum is a number
@@ -111,13 +116,6 @@ app.get("/employees/:employeeNum", function(req,res) {
             res.json({message: err});
         });
     }
-});
-
-
-
-app.post("/employees/add", function(req,res) {
-    service.addEmployee(req.body)
-    .then(res.redirect('/employees'));
 });
 
 // route for /managers
@@ -151,6 +149,7 @@ app.post("/images/add", upload.single("imageFile"), function(req, res) {
     res.redirect('/images');
 });
 
+// route for /images
 app.get("/images", function(req,res) {
     fs.readdir(path.join(__dirname,"/public/images/uploaded"), 
     function(err, items) {
