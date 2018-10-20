@@ -153,8 +153,11 @@ app.post("/images/add", upload.single("imageFile"), function(req, res) {
 app.get("/images", function(req,res) {
     fs.readdir(path.join(__dirname,"/public/images/uploaded"), 
     function(err, items) {
-        var dir = {images : items};
-        res.json(dir);
+        if (items.length > 0) {
+            res.json({images : items});
+        } else {
+            res.json({message : "There is currently no images"});
+        }
     });
 });
 
