@@ -13,15 +13,15 @@
 * 
 *****************************************************************************/  
 
-var service = require('./data-service.js')
-var express = require("express");
-var app = express();
-var path = require("path");
-var fs = require('fs');
-var multer = require("multer");
-var bodyParser = require('body-parser');
+const service = require('./data-service.js')
+const express = require("express");
+const app = express();
+const path = require("path");
+const fs = require('fs');
+const multer = require("multer");
+const bodyParser = require('body-parser');
 
-var HTTP_PORT = process.env.PORT || 8080;
+const HTTP_PORT = process.env.PORT || 8080;
 
 // for css
 app.use(express.static('public'));
