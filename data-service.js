@@ -68,14 +68,9 @@ module.exports = {
     
     // return managers
     getManagers: function() {
-        let managers = []; 
         let promise = new Promise(function(resolve, reject) {
             // parse employees array
-            for (let i = 0; i < employees.length; i++) {
-                // add managers to manager array
-                if (employees[i].isManager == true)
-                    managers.push(employees[i]);
-            }
+            let managers = collect(employees, "isManager", true);
 
             if (managers.length > 0) {
                 resolve(managers);
@@ -116,15 +111,12 @@ module.exports = {
     },
 
     getEmployeesByStatus: function(status) {
-        let empByStatus = [];
         let promise = new Promise(function(resolve, reject) {
             // validate status
-            if (status == "Full Time" || status == "Part Time") {
-                // check employees array for status
-                for (let i = 0; i < employees.length; i++) {
-                    if (employees[i].status == status)
-                        empByStatus.push(employees[i]);
-                }
+            // check using .toLowerCase() to ignore case
+            status = status.toLowerCase();
+            if (status == "full time" || status == "part time") {
+                let empByStatus = collect(employees, "status", status, true);
 
                 if (empByStatus.length > 0) {
                     resolve(empByStatus);
@@ -140,15 +132,11 @@ module.exports = {
     },
 
     getEmployeesByDepartment: function(department) {
-        let empByDep = [];
         let promise = new Promise(function(resolve, reject) {
             // validate department
             if (1 <= department && department <= 7) {
-                for (let i = 0; i < employees.length; i++) {
-                    if (employees[i].department == department)
-                        empByDep.push(employees[i]);
-                }
-
+                let empByDep = collect(employees, "department", department);
+                
                 if (empByDep.length > 0) {
                     resolve(empByDep);
                 } else {
@@ -163,14 +151,10 @@ module.exports = {
     },
 
     getEmployeesByManager: function(manager) {
-        let empByMan = [];
         let promise = new Promise(function(resolve, reject) {
             // validate manager
             if (1 <= manager && manager <= 31) {
-                for (let i = 0; i < employees.length; i++) {
-                    if (employees[i].employeeManagerNum == manager)
-                        empByMan.push(employees[i]);
-                }
+                let empByMan = collect(employees, "employeeManagerNum", manager);
 
                 if (empByMan.length > 0) {
                     resolve(empByMan);
@@ -197,4 +181,23 @@ module.exports = {
 
         return promise;
     }
-};
+}; // end module.exports
+
+// simple function for iterating an array and collecting key/value matchs
+var collect = function(array, key, value, str = false) {
+    let rtn = [];
+
+    if (!str) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i][key] = value)
+                rtn.push(array[i]);
+        }
+    } else { // for case insensitive string comparison
+        for (let i = 0; i < array.length; i++) {
+            if (array[i][key].toLowerCase() == value)
+                rtn.push(array[i]);
+        }
+    }
+
+    return rtn;
+}
