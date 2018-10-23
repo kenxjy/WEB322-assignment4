@@ -1,6 +1,6 @@
 # WEB322 - Assignment 3
 
-This project adds on to the demonstration of Node.js found in [https://shrouded-badlands-69336.herokuapp.com/](assignment 2). 
+This project adds on to the demonstration of Node.js found in [assigment 2](https://github.com/Tibbs39/WEB322-assignment2). 
 
 The following is demonstrated with this project:
 - Routing GET requests containing queries and returning requested data. 
@@ -18,10 +18,12 @@ This returns a list of employees filtered by status, either "Full Time" or "Part
 ```
 This returns a list of employees filtered by department. For example `/employees?department=1` returns a list of employees that are in department 1.
 
+
 ```
 /employees?manager
 ```
 This returns a list of employees filtered by their manager number. For example `/employees?manager=1` returns a list of employees who's manager's employee number is 1.
+
 
 ```
 /employees/:num
