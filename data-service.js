@@ -95,6 +95,9 @@ module.exports = {
         return promise;
     },
 
+    // NOTE: There's no data validation done.
+    // In a real world scenario, data validation should be done on
+    // both client and server side.S
     addEmployee: function(employeeData) {
         let promise = new Promise(function(resolve, reject) {
             // parse employeeData
@@ -189,7 +192,7 @@ var collect = function(array, key, value, str = false) {
 
     if (!str) {
         for (let i = 0; i < array.length; i++) {
-            if (array[i][key] = value)
+            if (array[i][key] == value)
                 rtn.push(array[i]);
         }
     } else { // for case insensitive string comparison

@@ -71,6 +71,7 @@ app.get("/employees", function(req,res) {
         .catch(function(err) {
             res.json({message: err});
         });
+    // /employees?manager
     } else if (req.query.manager) {
         service.getEmployeesByManager(req.query.manager)
         .then(function(value) {
