@@ -30,7 +30,7 @@ This returns a list of employees filtered by their manager number. For example `
 ```
 This returns the result of searching for an employee by their employee number. For example `/employees/2` will return employee number 2.
 
-*Please note that these queries cannot be changed together.*
+*Please note that these queries cannot be chained together.*
 
 This webapp was uploaded to heroku and can be viewed here: [https://shrouded-badlands-69336.herokuapp.com/](https://shrouded-badlands-69336.herokuapp.com/)
 
