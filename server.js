@@ -1,5 +1,5 @@
 /*****************************************************************************
-*  WEB322 – Assignment 3
+*  WEB322 – Assignment 4
 *  I declare that this assignment is my own work in accordance with Seneca 
 *  Academic Policy. No part of this assignment has been copied manually or 
 *  electronically from any other source (including web sites) or distributed 
@@ -7,7 +7,7 @@
 *  
 *  Name:         Kenneth Yue 
 *  Student ID:   1227932176 
-*  Date:         October 16, 2018 
+*  Date:         November 12, 2018 
 * 
 *  Online (Heroku) URL: https://shrouded-badlands-69336.herokuapp.com/
 * 
@@ -20,6 +20,7 @@ const path = require("path");
 const fs = require('fs');
 const multer = require("multer");
 const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
 
 const HTTP_PORT = process.env.PORT || 8080;
 
@@ -41,14 +42,26 @@ const storage = multer.diskStorage({
 // tell multer to use the diskStorage function for naming files instead of the default.
 const upload = multer({ storage: storage });
 
+// set up engine for handlebars
+app.engine('.hbs', exphbs({ extname: '.hbs', defaultLayout: 'main' }));
+app.set('view engine', '.hbs');
+
+app.use(function(req,res,next) {
+    let route = req.baseUrl + req.path;
+    app.locals.activeRoute = (route == "/") ? "/" : route.replace(/\/$/, "");
+    next();
+});
+
 // setting up default route
 app.get("/", function(req,res) {
-    res.sendFile(path.join(__dirname,"/views/home.html"));
+    //res.sendFile(path.join(__dirname,"/views/home.html"));
+    res.render('home');
 });
 
 // setting up route for /about
 app.get("/about", function(req,res) {
-    res.sendFile(path.join(__dirname,"/views/about.html"));
+    //res.sendFile(path.join(__dirname,"/views/about.html"));
+    res.render('about');
 });
 
 // route for /employees
@@ -94,7 +107,8 @@ app.get("/employees", function(req,res) {
 
 // setting up route for /employees/add
 app.get("/employees/add", function(req,res) {
-    res.sendFile(path.join(__dirname,"/views/addEmployee.html"));
+    //res.sendFile(path.join(__dirname,"/views/addEmployee.html"));
+    res.render('addEmployee');
 });
 
 app.post("/employees/add", function(req,res) {
@@ -143,7 +157,8 @@ app.get("/departments", function(req,res) {
 
 // setting up route for /images/add
 app.get("/images/add", function(req,res) {
-    res.sendFile(path.join(__dirname,"/views/addImage.html"));
+    //res.sendFile(path.join(__dirname,"/views/addImage.html"));
+    res.render('addImage');
 });
 
 app.post("/images/add", upload.single("imageFile"), function(req, res) {
