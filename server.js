@@ -87,39 +87,26 @@ app.get("/about", function(req,res) {
 
 // route for /employees
 app.get("/employees", function(req,res) {
-    // renders employee page with given object
-    renderpage = function(value) {
-        res.render('employees', {employees: value});
-    };
-
     // if /employees?status
     if (req.query.status) {
         service.getEmployeesByStatus(req.query.status)
-        .then((value) => renderpage(value))
-        .catch(function(err) {
-            res.json({message: err});
-        });
+        .then((value) => res.render('employees', {employees: value}))
+        .catch((err) => res.render('employees', {message: err}));
     // /employees?department   
     } else if (req.query.department) {
         service.getEmployeesByDepartment(req.query.department)
-        .then((value) => renderpage(value))
-        .catch(function(err) {
-            res.json({message: err});
-        });
+        .then((value) => res.render('employees', {employees: value}))
+        .catch((err) => res.render('employees', {message: err}));
     // /employees?manager
     } else if (req.query.manager) {
         service.getEmployeesByManager(req.query.manager)
-        .then((value) => renderpage(value))
-        .catch(function(err) {
-            res.json({message: err});
-        });
+        .then((value) => res.render('employees', {employees: value}))
+        .catch((err) => res.render('employees', {message: err}));
     } else {
         // getAllEmployees if invalid query
         service.getAllEmployees()
-        .then((value) => renderpage(value))
-        .catch(function(err) {
-            res.render('employees', {message: err});
-        });
+        .then((value) => res.render('employees', {employees: value}))
+        .catch((err) => res.render('employees', {message: err}));
     }
 });
 
@@ -167,10 +154,10 @@ app.get("/employees/:employeeNum", function(req,res) {
 app.get("/departments", function(req,res) {
     service.getDepartments()
     .then(function(value) {
-        res.json(value);
+        res.render('departments', {departments: value});
     })
     .catch(function(err) {
-        res.json({message: err});
+        res.render('departments', {message: err});
     });
 });
 
@@ -189,12 +176,7 @@ app.get("/images", function(req,res) {
     // read directory
     fs.readdir(path.join(__dirname,"/public/images/uploaded"), 
     function(err, items) {
-        //if (items.length > 0) {
-            //res.json({images : items});
             res.render('images', {images: items});
-        /* } else {
-            res.json({message : "There is currently no images"});
-        } */
     });
 });
 
