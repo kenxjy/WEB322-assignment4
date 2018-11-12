@@ -1,4 +1,9 @@
 <div class="row">
+    {{#unless employees}}
+        <div class="col-md-12 text-center">
+            <strong>{{message}}</strong>
+        </div>
+    {{/unless}}
     <div class="col-md-12">
         <h2>{{employee.firstName}} {{employee.lastName}} - Employee: {{employee.employeeNum}}</h2>
         <hr />
