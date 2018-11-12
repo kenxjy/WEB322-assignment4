@@ -87,41 +87,38 @@ app.get("/about", function(req,res) {
 
 // route for /employees
 app.get("/employees", function(req,res) {
+    // renders employee page with given object
+    renderpage = function(value) {
+        res.render('employees', {employees: value});
+    };
+
     // if /employees?status
     if (req.query.status) {
         service.getEmployeesByStatus(req.query.status)
-        .then(function(value) {
-            res.json(value);
-        })
+        .then((value) => renderpage(value))
         .catch(function(err) {
             res.json({message: err});
         });
     // /employees?department   
     } else if (req.query.department) {
         service.getEmployeesByDepartment(req.query.department)
-        .then(function(value) {
-            res.json(value);
-        })
+        .then((value) => renderpage(value))
         .catch(function(err) {
             res.json({message: err});
         });
     // /employees?manager
     } else if (req.query.manager) {
         service.getEmployeesByManager(req.query.manager)
-        .then(function(value) {
-            res.json(value);
-        })
+        .then((value) => renderpage(value))
         .catch(function(err) {
             res.json({message: err});
         });
     } else {
         // getAllEmployees if invalid query
         service.getAllEmployees()
-        .then(function(value) {
-            res.json(value);
-        })
+        .then((value) => renderpage(value))
         .catch(function(err) {
-            res.json({message: err});
+            res.render('employees', {message: err});
         });
     }
 });
@@ -189,13 +186,15 @@ app.post("/images/add", upload.single("imageFile"), function(req, res) {
 
 // route for /images
 app.get("/images", function(req,res) {
+    // read directory
     fs.readdir(path.join(__dirname,"/public/images/uploaded"), 
     function(err, items) {
-        if (items.length > 0) {
-            res.json({images : items});
-        } else {
+        //if (items.length > 0) {
+            //res.json({images : items});
+            res.render('images', {images: items});
+        /* } else {
             res.json({message : "There is currently no images"});
-        }
+        } */
     });
 });
 
