@@ -9,7 +9,7 @@
 *  Student ID:   1227932176 
 *  Date:         November 12, 2018 
 * 
-*  Online (Heroku) URL: https://shrouded-badlands-69336.herokuapp.com/
+*  Online (Heroku) URL: 
 * 
 *****************************************************************************/  
 
@@ -43,9 +43,30 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // set up engine for handlebars
-app.engine('.hbs', exphbs({ extname: '.hbs', defaultLayout: 'main' }));
+app.engine('.hbs', exphbs({ 
+    extname: '.hbs', 
+    defaultLayout: 'main',
+    helpers: {
+        // helper function for changing the navbar
+        navLink: function(url, options) {
+            return '<li' + 
+                ((url == app.locals.activeRoute) ? ' class="active" ' : '') + 
+                '><a href="' + url + '">' + options.fn(this) + '</a></li>';
+        },
+        equal: function(lvalue, rvalue, options) {
+            if (arguments.length < 3)
+                throw new Error("Handlebars Helper equal needs 2 parameters");
+            if (lvalue != rvalue) {
+                return options.inverse(this);
+            } else {
+                return options.fn(this);
+            }
+        }
+    } 
+}));
 app.set('view engine', '.hbs');
 
+// add middleware for the helper function
 app.use(function(req,res,next) {
     let route = req.baseUrl + req.path;
     app.locals.activeRoute = (route == "/") ? "/" : route.replace(/\/$/, "");
@@ -134,7 +155,8 @@ app.get("/employees/:employeeNum", function(req,res) {
 });
 
 // route for /managers
-app.get("/managers", function(req,res) {
+// depreciated
+/* app.get("/managers", function(req,res) {
     service.getManagers()
     .then(function(value) {
         res.json(value);
@@ -142,7 +164,7 @@ app.get("/managers", function(req,res) {
     .catch(function(err) {
         res.json({message: err});
     });
-});
+}); */
 
 // route for /departments
 app.get("/departments", function(req,res) {
