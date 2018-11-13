@@ -117,8 +117,7 @@ app.get("/employees/add", function(req,res) {
 });
 
 app.post("/employees/add", function(req,res) {
-    service.addEmployee(req.body)
-    .then(res.redirect('/employees'));
+    service.addEmployee(req.body).then(res.redirect('/employees'));
 });
 
 // route for /employee/:employeeNum
@@ -140,7 +139,6 @@ app.get("/employee/:employeeNum", function(req,res) {
 
 // updating employees
 app.post("/employee/update", (req, res) => {
-    console.log(req.body);
     service.updateEmployee(req.body).then(res.redirect("/employees"));
 });
 

@@ -190,7 +190,7 @@ module.exports = {
             for (let i = 0; i < employees.length; i++) {
                 if (employees[i].employeeNum == empData.employeeNum) {
                     let keys = Object.keys(employees[i]);
-                    for (let j in keys) 
+                    for (let j = 0; j < keys.length; j++) 
                         employees[i][keys[j]] = empData[keys[j]];
                     resolve();
                 }                    
