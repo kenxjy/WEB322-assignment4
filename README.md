@@ -1,5 +1,7 @@
 # WEB322 - Assignment 4
 
+This webapp was uploaded to heroku and can be viewed here: [https://serene-sands-79834.herokuapp.com/](https://serene-sands-79834.herokuapp.com/)
+
 This project adds on to the demonstration of Node.js found in [assignment 3](https://github.com/Tibbs39/WEB322-assignment3). 
 
 In this assignment we implemented Handlebars to our HTML pages. This allows for dynamic rendering of HTML. 
@@ -30,7 +32,5 @@ This returns the result of searching for an employee by their employee number. F
 This page allows you to edit and update the employee's information.
 
 *Please note that these queries cannot be chained together.*
-
-This webapp was uploaded to heroku and can be viewed here: [https://serene-sands-79834.herokuapp.com/](https://serene-sands-79834.herokuapp.com/)
 
 *My intention with uploading school assignments on GitHub is merely to build a portfolio of my work.* **_Please do not plagiarize._**
