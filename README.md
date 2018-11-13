@@ -31,4 +31,6 @@ This page allows you to edit and update the employee's information.
 
 *Please note that these queries cannot be chained together.*
 
+This webapp was uploaded to heroku and can be viewed here: [https://serene-sands-79834.herokuapp.com/](https://serene-sands-79834.herokuapp.com/)
+
 *My intention with uploading school assignments on GitHub is merely to build a portfolio of my work.* **_Please do not plagiarize._**
