@@ -183,6 +183,21 @@ module.exports = {
         });
 
         return promise;
+    },
+
+    updateEmployee: function(empData) {
+        let promise = new Promise(function(resolve, reject) { 
+            for (let i = 0; i < employees.length; i++) {
+                if (employees[i].employeeNum == empData.employeeNum) {
+                    let keys = Object.keys(employees[i]);
+                    for (let j in keys) 
+                        employees[i][keys[j]] = empData[keys[j]];
+                    resolve();
+                }                    
+            }
+        });
+
+        return promise;
     }
 }; // end module.exports
 
