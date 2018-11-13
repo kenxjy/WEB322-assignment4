@@ -122,7 +122,7 @@ app.post("/employees/add", function(req,res) {
 });
 
 // route for /employee/:employeeNum
-app.get("/employees/:employeeNum", function(req,res) {
+app.get("/employee/:employeeNum", function(req,res) {
     // parse if employeeNum is a number
     if (isNaN(req.params.employeeNum)) {
         // redirect if number is invalid
@@ -130,12 +130,18 @@ app.get("/employees/:employeeNum", function(req,res) {
     } else {
         service.getEmployeesByNum(req.params.employeeNum)
         .then(function(value) {
-            res.json(value);
+            res.render('employee', {employee: value});
         })
         .catch(function(err) {
-            res.json({message: err});
+            res.render('employee', {message: err});
         });
     }
+});
+
+// updating employees
+app.post("/employee/update", (req, res) => {
+    console.log(req.body);
+    service.updateEmployee(req.body).then(res.redirect("/employees"));
 });
 
 // route for /managers
