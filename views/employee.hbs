@@ -8,6 +8,9 @@
         <h2>{{employee.firstName}} {{employee.lastName}} - Employee: {{employee.employeeNum}}</h2>
         <hr />
         <form method="post" action="/employee/update">
+
+            <input name="employeeNum" type="hidden" value="{{employee.employeeNum}}"  />
+
             <fieldset>
                 <legend>Personal Information</legend>
                 <div class="row">
