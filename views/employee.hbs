@@ -1,9 +1,10 @@
 <div class="row">
-    {{#unless employees}}
+    {{#unless employee}}
         <div class="col-md-12 text-center">
             <strong>{{message}}</strong>
         </div>
     {{/unless}}
+    {{#if employee}}
     <div class="col-md-12">
         <h2>{{employee.firstName}} {{employee.lastName}} - Employee: {{employee.employeeNum}}</h2>
         <hr />
@@ -122,4 +123,5 @@
             <input type="submit" class="btn btn-primary pull-right" value="Update Employee" /><br /><br /><br />
         </form>
     </div>
+    {{/if}}
 </div>
