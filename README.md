@@ -2,8 +2,6 @@
 
 This webapp was uploaded to heroku and can be viewed here: [https://serene-sands-79834.herokuapp.com/](https://serene-sands-79834.herokuapp.com/)
 
-This project adds on to the demonstration of Node.js found in [assignment 3](https://github.com/Tibbs39/WEB322-assignment3). 
-
 In this assignment we implemented Handlebars to our HTML pages. This allows for dynamic rendering of HTML. 
 All queries now render HTML instead of returning stringified JSON. All pages were updated to use Handlebars.
 
