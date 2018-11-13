@@ -2,7 +2,8 @@
 
 This project adds on to the demonstration of Node.js found in [assignment 3](https://github.com/Tibbs39/WEB322-assignment3). 
 
-In this assignment we implemented handlebars to our HTML pages. This allows for dynamic rendering of HTML. All pages now render HTML instead of returning stringified JSON.
+In this assignment we implemented Handlebars to our HTML pages. This allows for dynamic rendering of HTML. 
+All queries now render HTML instead of returning stringified JSON. All pages were updated to use Handlebars.
 
 The following queries are available:
 ```
