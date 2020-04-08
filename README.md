@@ -1,7 +1,5 @@
 # WEB322 - Assignment 4
 
-This webapp was uploaded to heroku and can be viewed here: [https://serene-sands-79834.herokuapp.com/](https://serene-sands-79834.herokuapp.com/)
-
 In this assignment we implemented Handlebars to our HTML pages. This allows for dynamic rendering of HTML. 
 All queries now render HTML instead of returning stringified JSON. All pages were updated to use Handlebars.
 
